@@ -9,17 +9,21 @@ import { useSession } from 'next-auth/react';
 import ThemeContext from '@/context/themeContext';
 import Image from 'next/image';
 
+export const Logo = () => (
+    <Link href={'/'} >
+      <Image src={'/images/logo.png'} alt={'Logo'} width={'100'} height={'100'}/>
+    </Link>
+)
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
 
   const { data: session } = useSession();
 
+
   return (
     <header className='py-10 px-4 container mx-auto text-xl flex flex-wrap md:flex-nowrap items-center justify-between'>
       <div className='flex items-center w-full md:2/3'>
-        <Link href='/' className='font-black text-tertiary-dark'>
-          Hotelzz
-        </Link>
+        <Logo />
         <ul className='flex items-center ml-5'>
           <li className='flex items-center'>
             {session?.user ? (
